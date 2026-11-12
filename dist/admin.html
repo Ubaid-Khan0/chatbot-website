@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05091a">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Admin | Nexum Chatbot</title>
+  <link rel="icon" type="image/png" href="nexum-chatbot-favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="admin-brand" href="index.html" aria-label="Open Nexum AI website">
+        <img src="nexum-chatbot-favicon.png" alt="" width="42" height="42">
+        <span>NEXUM <b>AI</b><small>CONTROL ROOM</small></span>
+      </a>
+      <nav class="side-nav" aria-label="Admin sections">
+        <button class="active" data-view="overview"><span>◈</span> Overview</button>
+        <button data-view="leads"><span>◎</span> Leads <i data-lead-count>0</i></button>
+        <button data-view="pricing"><span>◇</span> Pricing</button>
+        <button data-view="content"><span>✦</span> Content</button>
+        <button data-view="database"><span>⌘</span> Database</button>
+      </nav>
+      <div class="sidebar-foot">
+        <span class="status-dot"></span>
+        <div><b>Local demo mode</b><small>Supabase not connected</small></div>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <button class="menu-toggle" type="button" aria-label="Toggle admin menu" aria-expanded="false">☰</button>
+        <div><p>Workspace</p><h1 data-view-title>Overview</h1></div>
+        <div class="top-actions">
+          <a href="index.html" target="_blank" rel="noopener">View website ↗</a>
+          <div class="avatar" aria-label="Administrator">UK</div>
+        </div>
+      </header>
+
+      <div class="demo-banner"><b>Frontend admin prototype</b><span>Changes are saved only in this browser. Connect Supabase before using real customer data.</span></div>
+
+      <section class="admin-view active" data-view-panel="overview">
+        <div class="welcome-row">
+          <div><p class="eyebrow">Today’s workspace</p><h2>Good to see you, Ubaid.</h2><p>Here is what is happening across Nexum Chatbot.</p></div>
+          <button class="primary-action" type="button" data-add-lead>+ Add test lead</button>
+        </div>
+        <div class="metric-grid">
+          <article class="metric"><span>Total leads</span><strong data-metric-total>0</strong><small>All captured enquiries</small></article>
+          <article class="metric"><span>Needs follow-up</span><strong data-metric-followup>0</strong><small>New or contacted</small></article>
+          <article class="metric"><span>Qualified</span><strong data-metric-qualified>0</strong><small>Ready for a proposal</small></article>
+          <article class="metric"><span>Won projects</span><strong data-metric-won>0</strong><small>Converted opportunities</small></article>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel chart-panel"><div class="panel-head"><div><span>Lead activity</span><h3>Last 7 days</h3></div><span class="trend">↗ Live preview</span></div><div class="bar-chart" data-chart aria-label="Lead activity chart"></div></article>
+          <article class="panel"><div class="panel-head"><div><span>Plan interest</span><h3>Package mix</h3></div></div><div class="plan-mix" data-plan-mix></div></article>
+        </div>
+        <article class="panel recent-panel"><div class="panel-head"><div><span>Newest enquiries</span><h3>Recent leads</h3></div><button class="text-button" data-open-leads>View all →</button></div><div class="compact-leads" data-recent-leads></div></article>
+      </section>
+
+      <section class="admin-view" data-view-panel="leads" hidden>
+        <div class="section-heading"><div><p class="eyebrow">Pipeline</p><h2>Lead management</h2><p>Search, qualify, and export incoming enquiries.</p></div><div class="heading-actions"><button class="secondary-action" type="button" data-export>Export CSV</button><button class="primary-action" type="button" data-add-lead>+ Add test lead</button></div></div>
+        <div class="toolbar"><label class="search-box"><span>⌕</span><input type="search" placeholder="Search name, company, email…" data-search></label><select data-status-filter aria-label="Filter by status"><option value="all">All statuses</option><option>New</option><option>Contacted</option><option>Qualified</option><option>Won</option><option>Archived</option></select><select data-plan-filter aria-label="Filter by plan"><option value="all">All plans</option><option>Starter</option><option>Growth</option><option>Custom</option><option>Not sure</option></select></div>
+        <div class="table-wrap"><table><thead><tr><th>Lead</th><th>Plan</th><th>Received</th><th>Status</th><th>Action</th></tr></thead><tbody data-lead-table></tbody></table><div class="empty-state" data-empty hidden><span>◎</span><h3>No leads found</h3><p>Try changing your filters.</p></div></div>
+      </section>
+
+      <section class="admin-view" data-view-panel="pricing" hidden>
+        <div class="section-heading"><div><p class="eyebrow">Commercial settings</p><h2>Pricing packages</h2><p>Edit draft package information before connecting the live database.</p></div><button class="primary-action" type="button" data-save-pricing>Save pricing draft</button></div>
+        <div class="pricing-editor" data-pricing-editor></div><p class="save-note" data-pricing-status></p>
+      </section>
+
+      <section class="admin-view" data-view-panel="content" hidden>
+        <div class="section-heading"><div><p class="eyebrow">Website messaging</p><h2>Content drafts</h2><p>Prepare hero and call-to-action copy for a future database connection.</p></div><button class="primary-action" type="button" data-save-content>Save content draft</button></div>
+        <div class="content-editor panel"><div class="form-field"><label for="hero-title">Hero title</label><input id="hero-title" data-content="heroTitle"></div><div class="form-field"><label for="hero-lead">Hero description</label><textarea id="hero-lead" data-content="heroLead"></textarea></div><div class="form-field"><label for="cta-title">Main call-to-action</label><input id="cta-title" data-content="ctaTitle"></div><div class="form-field"><label for="contact-email">Contact email</label><input id="contact-email" type="email" data-content="contactEmail"></div><p class="save-note" data-content-status></p></div>
+      </section>
+
+      <section class="admin-view" data-view-panel="database" hidden>
+        <div class="section-heading"><div><p class="eyebrow">Recommended backend</p><h2>Connect Supabase</h2><p>PostgreSQL, authentication, row-level security, APIs, and storage in one service.</p></div><span class="recommend-badge">Recommended</span></div>
+        <div class="database-grid"><article class="panel database-card"><span class="db-icon">S</span><h3>Why Supabase fits</h3><ul><li>Structured PostgreSQL data for leads, plans, and content</li><li>Secure admin login through Supabase Auth</li><li>Row-level security to protect customer data</li><li>Works with a static frontend and Edge Functions</li><li>Simple path from prototype to production</li></ul></article><article class="panel schema-card"><span>Suggested tables</span><div><b>profiles</b><small>Admin users and roles</small></div><div><b>leads</b><small>Contact enquiries and pipeline status</small></div><div><b>plans</b><small>Prices, features, and visibility</small></div><div><b>site_content</b><small>Editable website copy stored as JSON</small></div><div><b>audit_log</b><small>Track sensitive admin changes</small></div></article></div>
+        <article class="security-note"><b>Important security rule</b><p>Never place a Supabase service-role key in browser code. Use the public anonymous key with strict row-level security, and perform privileged actions through an authenticated Edge Function.</p></article>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="lead-dialog" data-lead-dialog><form method="dialog" data-lead-form><div class="dialog-head"><div><span>Add test lead</span><h2>New enquiry</h2></div><button value="cancel" aria-label="Close">×</button></div><div class="dialog-grid"><label>Name<input name="name" required></label><label>Company<input name="company" required></label><label>Email<input name="email" type="email" required></label><label>Plan<select name="plan"><option>Starter</option><option>Growth</option><option>Custom</option><option>Not sure</option></select></label><label class="full">Project note<textarea name="message" required></textarea></label></div><div class="dialog-actions"><button value="cancel" class="secondary-action">Cancel</button><button value="default" class="primary-action" data-submit-lead>Add lead</button></div></form></dialog>
+  <script src="admin.js"></script>
+</body>
+</html>
