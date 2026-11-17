@@ -7,7 +7,7 @@ const seedLeads=[
   {id:crypto.randomUUID(),name:'Mina Raza',company:'Aura Wellness',email:'mina@example.com',plan:'Not sure',message:'Help visitors choose and book a service.',status:'New',createdAt:Date.now()-1000*60*60*74}
 ];
 const defaultPricing=[{name:'Starter',price:'150,000',description:'Focused chatbot for essential questions and a clear customer journey.'},{name:'Growth',price:'300,000',description:'Multiple flows, lead qualification, and selected workflow connections.'},{name:'Custom',price:'600,000+',description:'Complex journeys, larger knowledge sets, and advanced integrations.'}];
-const defaultContent={heroTitle:'Every conversation. Connected.',heroLead:'An AI chatbot built around your business—ready to answer, guide, qualify, and support your customers around the clock.',ctaTitle:'Find the right chatbot package.',contactEmail:'info@nexumglobal.solutions'};
+const defaultContent={heroTitle:'Every conversation. Connected.',heroLead:'An AI chatbot built around your business—ready to answer, guide, qualify, and support your customers around the clock.',ctaTitle:'Find the right chatbot package.',contactEmail:'info@nexumglobal.solutions',contactPhone:''};
 const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))||fallback}catch{return fallback}};
 const write=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
 let leads=read(storageKeys.leads,seedLeads);if(!localStorage.getItem(storageKeys.leads))write(storageKeys.leads,leads);
