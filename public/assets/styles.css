@@ -56,3 +56,6 @@ body{background:radial-gradient(circle at 82% 5%,rgba(200,7,7,.16),transparent 2
 
 /* Hover: Nexum blue background with white lettering. */
 :where(button,.button,.button-link):hover{background:#0b3d91!important;border-color:#0b3d91!important;color:#fff!important}.menu-button:hover span{background:#fff!important}
+
+/* Red feature-exploration CTA */
+.hero-actions .button-secondary{background:#c80707!important;border-color:#c80707!important;color:#fff!important}.hero-actions .button-secondary:hover{background:#0b3d91!important;border-color:#0b3d91!important;color:#fff!important}

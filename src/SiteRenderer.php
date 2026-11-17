@@ -57,7 +57,7 @@ final class SiteRenderer
     private function rewriteAssetsAndLinks(string $html): string
     {
         $replacements = [
-            'href="styles.css?v=blue-hover-border-4"'=>'href="/assets/styles.css?v=blue-hover-border-4"','href="admin.css?v=blue-hover-border-4"'=>'href="/assets/admin.css?v=blue-hover-border-4"',
+            'href="styles.css?v=explore-red-5"'=>'href="/assets/styles.css?v=explore-red-5"','href="admin.css?v=blue-hover-border-4"'=>'href="/assets/admin.css?v=blue-hover-border-4"',
             'href="styles.css"'=>'href="/assets/styles.css"','href="admin.css"'=>'href="/assets/admin.css"',
             'src="script.js"'=>'src="/assets/script.js"','src="admin.js"'=>'src="/assets/admin.js"',
             'href="nexum-chatbot-favicon.png"'=>'href="/assets/nexum-chatbot-favicon.png"','src="nexum-chatbot-favicon.png"'=>'src="/assets/nexum-chatbot-favicon.png"',
