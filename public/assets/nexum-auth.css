@@ -83,6 +83,6 @@ button:active,
 button:hover,
 .button-link:hover {
   background: #0b3d91 !important;
-  border-color: #c80707 !important;
+  border-color: #0b3d91 !important;
   color: #fff !important;
 }

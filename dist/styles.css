@@ -55,4 +55,4 @@ body{background:radial-gradient(circle at 82% 5%,rgba(200,7,7,.16),transparent 2
 :where(button,.button,.button-link),:where(button,.button,.button-link):hover,:where(button,.button,.button-link):focus,:where(button,.button,.button-link):active,:where(button,.button,.button-link).selected{background:#fff!important;border-color:#c80707!important;color:#c80707!important}.menu-button span{background:#c80707!important}
 
 /* Hover: Nexum blue background with white lettering. */
-:where(button,.button,.button-link):hover{background:#0b3d91!important;border-color:#c80707!important;color:#fff!important}.menu-button:hover span{background:#fff!important}
+:where(button,.button,.button-link):hover{background:#0b3d91!important;border-color:#0b3d91!important;color:#fff!important}.menu-button:hover span{background:#fff!important}

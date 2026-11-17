@@ -2,4 +2,4 @@
 .admin-logout{border-color:#c80707;background:#c80707;color:#fff;transition:background .2s,border-color .2s}.admin-logout:hover{background:#0b3d91;border-color:#0b3d91}.admin-logout:focus-visible{outline:3px solid rgba(215,215,217,.72);outline-offset:3px}
 .admin-logout{background:#fff;border-color:#c80707;color:#c80707}.admin-logout:hover{background:#0b3d91;border-color:#d43b3b;color:#d43b3b}
 .admin-logout,.admin-logout:hover,.admin-logout:focus,.admin-logout:active{background:#fff!important;border-color:#c80707!important;color:#c80707!important}
-.admin-logout:hover{background:#0b3d91!important;border-color:#c80707!important;color:#fff!important}
+.admin-logout:hover{background:#0b3d91!important;border-color:#0b3d91!important;color:#fff!important}
