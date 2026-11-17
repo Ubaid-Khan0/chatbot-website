@@ -34,3 +34,10 @@ body{background:radial-gradient(circle at 82% 5%,rgba(200,7,7,.16),transparent 2
 .page-hero:after{background:radial-gradient(circle at 52% 48%,rgba(200,7,7,.2),rgba(15,91,91,.14) 42%,rgba(4,26,65,.14) 70%),url("nexum-robot-mascot.png") center bottom/72% auto no-repeat;border-color:rgba(200,7,7,.5);box-shadow:0 0 70px rgba(200,7,7,.2),inset 0 0 80px rgba(4,26,65,.28)}
 .statement-rotator h2{color:#d43b3b;text-shadow:0 0 8px rgba(212,59,59,.8),0 0 30px rgba(200,7,7,.4)}.statement-rotator h2:nth-child(2){color:#d7d7d9;text-shadow:0 0 8px rgba(215,215,217,.7),0 0 30px rgba(15,91,91,.4)}.statement-rotator h2:nth-child(3){color:#fff;text-shadow:0 0 8px rgba(255,255,255,.65),0 0 30px rgba(11,61,145,.45)}.statement-rotator h2:nth-child(4){color:#d43b3b;text-shadow:0 0 8px rgba(212,59,59,.8),0 0 30px rgba(200,7,7,.4)}
 .mobile-menu{background:#052b2b}
+
+/* Nexum button system */
+.button{border:1px solid transparent;box-shadow:none}.button:focus-visible,.option:focus-visible,.quiz-back:focus-visible,.menu-button:focus-visible{outline:3px solid rgba(215,215,217,.72);outline-offset:3px}
+.button-primary{background:#c80707;border-color:#c80707;color:#fff;box-shadow:0 10px 28px rgba(200,7,7,.28)}.button-primary:hover{background:#b00606;border-color:#b00606;box-shadow:0 12px 32px rgba(200,7,7,.3)}
+.button-secondary{background:#0f5b5b;border-color:#0f5b5b;color:#fff;box-shadow:0 10px 26px rgba(5,43,43,.2)}.button-secondary:hover{background:#052b2b;border-color:#d7d7d9;color:#fff}
+.option{border-color:rgba(215,215,217,.2);background:rgba(15,91,91,.24);color:#fff}.option:hover{border-color:#0f5b5b;background:#0f5b5b;color:#fff}.option.selected{border-color:#c80707;background:#c80707;color:#fff;box-shadow:0 8px 24px rgba(200,7,7,.2)}
+.quiz-back{color:#d7d7d9}.quiz-back:hover{color:#fff}.menu-button span{background:#c80707}

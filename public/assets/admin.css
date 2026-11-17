@@ -11,3 +11,9 @@ body{background:radial-gradient(circle at 72% 0,rgba(200,7,7,.16),transparent 28
 .metric,.panel{background:linear-gradient(145deg,rgba(5,43,43,.97),rgba(4,26,65,.95))}.metric:after{background:#0f5b5b}.bar-column i{background:linear-gradient(180deg,#c80707,#d43b3b);box-shadow:0 0 16px rgba(200,7,7,.2)}
 .lead-avatar{background:rgba(15,91,91,.35);color:#fff}.plan-pill{border-color:rgba(215,215,217,.22);color:#d7d7d9}.status-pill{background:rgba(11,61,145,.25);color:#d7d7d9}
 .search-box,.toolbar select,.toolbar option,td select,.form-field input,.form-field textarea,.price-edit-card input,.price-edit-card textarea,.lead-dialog input,.lead-dialog select,.lead-dialog textarea{background:#041a41}.table-wrap{background:rgba(5,43,43,.8)}.lead-dialog{background:#052b2b}
+
+/* Nexum button system */
+.primary-action,.secondary-action{border:1px solid transparent;transition:background .2s,border-color .2s,transform .2s}.primary-action:hover,.secondary-action:hover{transform:translateY(-1px)}.primary-action:focus-visible,.secondary-action:focus-visible,.text-button:focus-visible,.row-action:focus-visible,.side-nav button:focus-visible,.menu-toggle:focus-visible,.dialog-head button:focus-visible{outline:3px solid rgba(215,215,217,.72);outline-offset:3px}
+.primary-action{background:#c80707;border-color:#c80707;color:#fff;box-shadow:0 8px 24px rgba(200,7,7,.24)}.primary-action:hover{background:#b00606;border-color:#b00606}
+.secondary-action{background:#0f5b5b;border-color:#0f5b5b;color:#fff}.secondary-action:hover{background:#052b2b;border-color:#d7d7d9}
+.text-button,.row-action,.menu-toggle{color:#d43b3b}.text-button:hover,.row-action:hover,.menu-toggle:hover{color:#fff}.dialog-head button:hover{color:#fff}
