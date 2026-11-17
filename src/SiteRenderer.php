@@ -48,7 +48,7 @@ final class SiteRenderer
     {
         $html = $this->rewriteAssetsAndLinks((string) file_get_contents($this->root . '/dist/admin.html'));
         $html = str_replace('<script src="/assets/admin.js"></script>', '<script src="/assets/admin-api.js"></script>', $html);
-        $html = str_replace('</head>', '<link rel="stylesheet" href="/assets/admin-live.css"></head>', $html);
+        $html = str_replace('</head>', '<link rel="stylesheet" href="/assets/admin-live.css?v=white-buttons-2"></head>', $html);
         $html = str_replace('<head>', '<head><meta name="csrf-token" content="' . htmlspecialchars(Csrf::token(), ENT_QUOTES, 'UTF-8') . '">', $html);
         $html = str_replace('<body>', '<body data-admin-role="' . htmlspecialchars((string) $user['role'], ENT_QUOTES, 'UTF-8') . '" data-admin-name="' . htmlspecialchars((string) $user['name'], ENT_QUOTES, 'UTF-8') . '">', $html);
         return str_replace('Frontend admin prototype', 'MongoDB connected', str_replace('Changes are saved only in this browser. Connect Supabase before using real customer data.', 'Authenticated production dashboard. Changes are stored in MongoDB Atlas.', $html));
@@ -57,6 +57,7 @@ final class SiteRenderer
     private function rewriteAssetsAndLinks(string $html): string
     {
         $replacements = [
+            'href="styles.css?v=white-buttons-2"'=>'href="/assets/styles.css?v=white-buttons-2"','href="admin.css?v=white-buttons-2"'=>'href="/assets/admin.css?v=white-buttons-2"',
             'href="styles.css"'=>'href="/assets/styles.css"','href="admin.css"'=>'href="/assets/admin.css"',
             'src="script.js"'=>'src="/assets/script.js"','src="admin.js"'=>'src="/assets/admin.js"',
             'href="nexum-chatbot-favicon.png"'=>'href="/assets/nexum-chatbot-favicon.png"','src="nexum-chatbot-favicon.png"'=>'src="/assets/nexum-chatbot-favicon.png"',

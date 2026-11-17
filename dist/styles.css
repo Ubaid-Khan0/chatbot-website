@@ -50,3 +50,6 @@ body{background:radial-gradient(circle at 82% 5%,rgba(200,7,7,.16),transparent 2
 
 /* White buttons with Nexum red labels and borders */
 .button-primary,.button-secondary,.option,.quiz-back,.back-to-top,.menu-button{background:#fff;border-color:#c80707;color:#c80707;box-shadow:0 10px 28px rgba(4,26,65,.22)}.button-primary:hover,.button-secondary:hover,.option:hover,.quiz-back:hover,.back-to-top:hover,.menu-button:hover{background:#0b3d91;border-color:#d43b3b;color:#d43b3b;box-shadow:0 12px 32px rgba(11,61,145,.4)}.option.selected{background:#041a41;border-color:#c80707;color:#c80707}.menu-button span{background:#c80707}
+
+/* Every button stays white in every interaction state. */
+:where(button,.button,.button-link),:where(button,.button,.button-link):hover,:where(button,.button,.button-link):focus,:where(button,.button,.button-link):active,:where(button,.button,.button-link).selected{background:#fff!important;border-color:#c80707!important;color:#c80707!important}.menu-button span{background:#c80707!important}

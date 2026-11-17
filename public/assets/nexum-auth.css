@@ -66,3 +66,16 @@ button:hover,
   border-color: #d43b3b;
   color: #d43b3b;
 }
+
+button,
+button:hover,
+button:focus,
+button:active,
+.button-link,
+.button-link:hover,
+.button-link:focus,
+.button-link:active {
+  background: #fff !important;
+  border-color: #c80707 !important;
+  color: #c80707 !important;
+}
