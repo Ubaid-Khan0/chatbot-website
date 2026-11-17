@@ -26,3 +26,5 @@ body{background:radial-gradient(circle at 72% 0,rgba(200,7,7,.16),transparent 28
 
 /* Every admin button stays white in every interaction state. */
 button,button:hover,button:focus,button:active,.primary-action,.secondary-action,.text-button,.row-action,.menu-toggle{background:#fff!important;border-color:#c80707!important;color:#c80707!important}
+
+button:hover,.primary-action:hover,.secondary-action:hover,.text-button:hover,.row-action:hover,.menu-toggle:hover{background:#0b3d91!important;border-color:#c80707!important;color:#fff!important}

@@ -79,3 +79,10 @@ button:active,
   border-color: #c80707 !important;
   color: #c80707 !important;
 }
+
+button:hover,
+.button-link:hover {
+  background: #0b3d91 !important;
+  border-color: #c80707 !important;
+  color: #fff !important;
+}
