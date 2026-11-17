@@ -133,8 +133,18 @@ final class Store
 
     public function content(): array
     {
+        $result = [
+            'heroTitle' => 'Every conversation. Connected.',
+            'heroLead' => 'An AI chatbot built around your business—ready to answer, guide, qualify, and support your customers around the clock.',
+            'ctaTitle' => 'Find the right chatbot package.',
+            'contactEmail' => 'info@nexumglobal.solutions',
+            'contactPhone' => '',
+            'contactResponse' => 'Project discussions are handled by Nexum Global Solutions.',
+            'chatGreeting' => 'Hi! What would you like help with today?',
+            'chatVisitor' => 'I need a smarter way to support website visitors.',
+            'chatResponse' => 'I can answer common questions, qualify opportunities, and guide each visitor toward the right next step—even when your team is offline.',
+        ];
         $items = iterator_to_array(Database::connection()->site_content->find(), false);
-        $result = [];
         foreach ($items as $item) {
             $result[(string) $item['key']] = $item['value'];
         }
@@ -143,12 +153,18 @@ final class Store
 
     public function saveContent(array $content, array $actor): array
     {
-        $allowed = ['heroTitle', 'heroLead', 'ctaTitle', 'contactEmail'];
+        $allowed = ['heroTitle', 'heroLead', 'ctaTitle', 'contactEmail', 'contactPhone', 'contactResponse', 'chatGreeting', 'chatVisitor', 'chatResponse'];
         foreach ($allowed as $key) {
             if (!array_key_exists($key, $content)) {
                 continue;
             }
             $value = $key === 'contactEmail' ? Auth::normalizeEmail((string) $content[$key]) : substr(trim((string) $content[$key]), 0, 500);
+            if ($key === 'contactPhone') {
+                $value = substr(trim((string) $content[$key]), 0, 40);
+                if ($value !== '' && !preg_match('/^[0-9+().\-\s]{5,40}$/', $value)) {
+                    throw new HttpException(422, 'Enter a valid contact phone number.');
+                }
+            }
             Database::connection()->site_content->updateOne(['key' => $key], ['$set' => ['value' => $value, 'updated_at' => new UTCDateTime()]], ['upsert' => true]);
         }
         $this->audit($actor, 'content.updated', 'site_content', null, ['keys' => array_keys($content)]);

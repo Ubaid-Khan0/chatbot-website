@@ -36,9 +36,25 @@ final class SiteRenderer
             $html = str_replace('Every conversation.<br><em>Connected.</em>', $this->heroTitle((string) ($content['heroTitle'] ?? 'Every conversation. Connected.')), $html);
             $defaultLead = 'An AI chatbot built around your business—ready to answer, guide, qualify, and support your customers around the clock.';
             $html = str_replace($defaultLead, htmlspecialchars((string) ($content['heroLead'] ?? $defaultLead), ENT_QUOTES, 'UTF-8'), $html);
+            foreach ([
+                'Hi! What would you like help with today?' => 'chatGreeting',
+                'I need a smarter way to support website visitors.' => 'chatVisitor',
+                'I can answer common questions, qualify opportunities, and guide each visitor toward the right next step—even when your team is offline.' => 'chatResponse',
+            ] as $default => $key) {
+                $html = str_replace($default, htmlspecialchars((string) ($content[$key] ?? $default), ENT_QUOTES, 'UTF-8'), $html);
+            }
         }
         $html = str_replace('Find the right chatbot package.', htmlspecialchars((string) ($content['ctaTitle'] ?? 'Find the right chatbot package.'), ENT_QUOTES, 'UTF-8'), $html);
-        $html = str_replace('info@nexumglobal.solutions', htmlspecialchars((string) ($content['contactEmail'] ?? 'info@nexumglobal.solutions'), ENT_QUOTES, 'UTF-8'), $html);
+        $email = htmlspecialchars((string) ($content['contactEmail'] ?? 'info@nexumglobal.solutions'), ENT_QUOTES, 'UTF-8');
+        $html = str_replace('mailto:info@nexumglobal.solutions', 'mailto:' . $email, $html);
+        $html = str_replace('info@nexumglobal.solutions', $email, $html);
+        $html = str_replace('Project discussions are handled by Nexum Global Solutions.', htmlspecialchars((string) ($content['contactResponse'] ?? 'Project discussions are handled by Nexum Global Solutions.'), ENT_QUOTES, 'UTF-8'), $html);
+        $phone = trim((string) ($content['contactPhone'] ?? ''));
+        if ($phone !== '') {
+            $phoneHref = preg_replace('/[^0-9+]/', '', $phone);
+            $phoneItem = '<div class="contact-item"><small>Phone</small><a href="tel:' . htmlspecialchars((string) $phoneHref, ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($phone, ENT_QUOTES, 'UTF-8') . '</a></div>';
+            $html = str_replace('<div class="contact-item"><small>Response</small>', $phoneItem . '<div class="contact-item"><small>Response</small>', $html);
+        }
 
         $config = htmlspecialchars(base64_encode((string) json_encode($plans, JSON_UNESCAPED_UNICODE)), ENT_QUOTES, 'UTF-8');
         return str_replace('</body>', '<div hidden data-plan-config="' . $config . '"></div><script src="/assets/php-site.js"></script></body>', $html);
@@ -51,7 +67,12 @@ final class SiteRenderer
         $html = str_replace('</head>', '<link rel="stylesheet" href="/assets/admin-live.css?v=blue-hover-border-4"></head>', $html);
         $html = str_replace('<head>', '<head><meta name="csrf-token" content="' . htmlspecialchars(Csrf::token(), ENT_QUOTES, 'UTF-8') . '">', $html);
         $html = str_replace('<body>', '<body data-admin-role="' . htmlspecialchars((string) $user['role'], ENT_QUOTES, 'UTF-8') . '" data-admin-name="' . htmlspecialchars((string) $user['name'], ENT_QUOTES, 'UTF-8') . '">', $html);
-        return str_replace('Frontend admin prototype', 'MongoDB connected', str_replace('Changes are saved only in this browser. Connect Supabase before using real customer data.', 'Authenticated production dashboard. Changes are stored in MongoDB Atlas.', $html));
+        $html = str_replace('Frontend admin prototype', 'MongoDB connected', str_replace('Changes are saved only in this browser. Connect Supabase before using real customer data.', 'Authenticated production dashboard. Changes are stored in MongoDB Atlas.', $html));
+        $html = str_replace('Edit draft package information before connecting the live database.', 'Update live package prices and descriptions. Changes appear on the website after saving.', $html);
+        $html = str_replace('Prepare hero and call-to-action copy for a future database connection.', 'Edit the live homepage hero, chatbot dialogue, and contact information.', $html);
+        $html = str_replace('Save pricing draft', 'Save pricing', $html);
+        $html = str_replace('Save content draft', 'Save website changes', $html);
+        return str_replace('Local demo mode', 'Secure admin session', str_replace('Supabase not connected', 'MongoDB Atlas connected', $html));
     }
 
     private function rewriteAssetsAndLinks(string $html): string

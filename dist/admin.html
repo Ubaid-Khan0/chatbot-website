@@ -69,19 +69,30 @@
       </section>
 
       <section class="admin-view" data-view-panel="pricing" hidden>
-        <div class="section-heading"><div><p class="eyebrow">Commercial settings</p><h2>Pricing packages</h2><p>Edit draft package information before connecting the live database.</p></div><button class="primary-action" type="button" data-save-pricing>Save pricing draft</button></div>
+        <div class="section-heading"><div><p class="eyebrow">Commercial settings</p><h2>Pricing packages</h2><p>Update live package prices and descriptions. Changes appear on the website after saving.</p></div><button class="primary-action" type="button" data-save-pricing>Save pricing</button></div>
         <div class="pricing-editor" data-pricing-editor></div><p class="save-note" data-pricing-status></p>
       </section>
 
       <section class="admin-view" data-view-panel="content" hidden>
-        <div class="section-heading"><div><p class="eyebrow">Website messaging</p><h2>Content drafts</h2><p>Prepare hero and call-to-action copy for a future database connection.</p></div><button class="primary-action" type="button" data-save-content>Save content draft</button></div>
-        <div class="content-editor panel"><div class="form-field"><label for="hero-title">Hero title</label><input id="hero-title" data-content="heroTitle"></div><div class="form-field"><label for="hero-lead">Hero description</label><textarea id="hero-lead" data-content="heroLead"></textarea></div><div class="form-field"><label for="cta-title">Main call-to-action</label><input id="cta-title" data-content="ctaTitle"></div><div class="form-field"><label for="contact-email">Contact email</label><input id="contact-email" type="email" data-content="contactEmail"></div><p class="save-note" data-content-status></p></div>
+        <div class="section-heading"><div><p class="eyebrow">Website messaging</p><h2>Homepage content</h2><p>Edit the live homepage hero, chatbot dialogue, and contact information.</p></div><button class="primary-action" type="button" data-save-content>Save website changes</button></div>
+        <div class="content-editor panel">
+          <div class="form-field"><label for="hero-title">Hero headline</label><input id="hero-title" maxlength="160" data-content="heroTitle"></div>
+          <div class="form-field"><label for="hero-lead">Hero description</label><textarea id="hero-lead" maxlength="500" data-content="heroLead"></textarea></div>
+          <div class="form-field"><label for="chat-greeting">Chat preview: assistant greeting</label><textarea id="chat-greeting" maxlength="500" data-content="chatGreeting"></textarea></div>
+          <div class="form-field"><label for="chat-visitor">Chat preview: visitor message</label><textarea id="chat-visitor" maxlength="500" data-content="chatVisitor"></textarea></div>
+          <div class="form-field"><label for="chat-response">Chat preview: assistant reply</label><textarea id="chat-response" maxlength="500" data-content="chatResponse"></textarea></div>
+          <div class="form-field"><label for="cta-title">Pricing call-to-action</label><input id="cta-title" maxlength="500" data-content="ctaTitle"></div>
+          <div class="form-field"><label for="contact-email">Contact email</label><input id="contact-email" type="email" maxlength="254" data-content="contactEmail"></div>
+          <div class="form-field"><label for="contact-phone">Contact phone (optional)</label><input id="contact-phone" type="tel" maxlength="40" data-content="contactPhone"></div>
+          <div class="form-field"><label for="contact-response">Contact response note</label><textarea id="contact-response" maxlength="500" data-content="contactResponse"></textarea></div>
+          <p class="save-note" data-content-status></p>
+        </div>
       </section>
 
       <section class="admin-view" data-view-panel="database" hidden>
-        <div class="section-heading"><div><p class="eyebrow">Recommended backend</p><h2>Connect Supabase</h2><p>PostgreSQL, authentication, row-level security, APIs, and storage in one service.</p></div><span class="recommend-badge">Recommended</span></div>
+        <div class="section-heading"><div><p class="eyebrow">Connected backend</p><h2>MongoDB Atlas</h2><p>This authenticated PHP admin panel stores website content and pricing in MongoDB.</p></div><span class="recommend-badge">Connected</span></div>
         <div class="database-grid"><article class="panel database-card"><span class="db-icon">S</span><h3>Why Supabase fits</h3><ul><li>Structured PostgreSQL data for leads, plans, and content</li><li>Secure admin login through Supabase Auth</li><li>Row-level security to protect customer data</li><li>Works with a static frontend and Edge Functions</li><li>Simple path from prototype to production</li></ul></article><article class="panel schema-card"><span>Suggested tables</span><div><b>profiles</b><small>Admin users and roles</small></div><div><b>leads</b><small>Contact enquiries and pipeline status</small></div><div><b>plans</b><small>Prices, features, and visibility</small></div><div><b>site_content</b><small>Editable website copy stored as JSON</small></div><div><b>audit_log</b><small>Track sensitive admin changes</small></div></article></div>
-        <article class="security-note"><b>Important security rule</b><p>Never place a Supabase service-role key in browser code. Use the public anonymous key with strict row-level security, and perform privileged actions through an authenticated Edge Function.</p></article>
+        <article class="security-note"><b>Access protection</b><p>Only authenticated admins and editors can save website content and pricing. Viewers can inspect the dashboard without making changes.</p></article>
       </section>
     </main>
   </div>
