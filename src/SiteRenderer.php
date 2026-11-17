@@ -13,7 +13,7 @@ final class SiteRenderer
         $file = $this->root . '/dist/' . $page . '.html';
         if (!is_file($file)) throw new HttpException(404, 'Page not found.');
         $html = $this->rewriteAssetsAndLinks((string) file_get_contents($file));
-        if ($page === 'contact') $html = str_replace('data-contact-form', 'data-contact-form-php', $html);
+        if ($page === 'index' || $page === 'contact') $html = str_replace('data-contact-form', 'data-contact-form-php', $html);
 
         $plans = $this->store->plans(true);
         $defaultPrices = ['Starter'=>'PKR 150,000','Growth'=>'PKR 300,000','Custom'=>'PKR 600,000+'];
@@ -26,7 +26,7 @@ final class SiteRenderer
             $name = (string) ($plan['name'] ?? '');
             $price = 'PKR ' . number_format((int) ($plan['starting_price_pkr'] ?? 0)) . ($plan['price_suffix'] ?? '');
             if (isset($defaultPrices[$name])) $html = str_replace($defaultPrices[$name], $price, $html);
-            if ($page === 'pricing' && isset($defaultDescriptions[$name])) {
+            if (($page === 'index' || $page === 'pricing') && isset($defaultDescriptions[$name])) {
                 $html = str_replace($defaultDescriptions[$name], htmlspecialchars((string) $plan['description'], ENT_QUOTES, 'UTF-8'), $html);
             }
         }
@@ -60,8 +60,8 @@ final class SiteRenderer
             'href="styles.css"'=>'href="/assets/styles.css"','href="admin.css"'=>'href="/assets/admin.css"',
             'src="script.js"'=>'src="/assets/script.js"','src="admin.js"'=>'src="/assets/admin.js"',
             'href="nexum-chatbot-favicon.png"'=>'href="/assets/nexum-chatbot-favicon.png"','src="nexum-chatbot-favicon.png"'=>'src="/assets/nexum-chatbot-favicon.png"',
-            'href="index.html"'=>'href="/"','href="features.html"'=>'href="/features"','href="solutions.html"'=>'href="/solutions"','href="pricing.html#'=>'href="/pricing#','href="pricing.html"'=>'href="/pricing"',
-            'href="contact.html?'=>'href="/contact?','href="contact.html"'=>'href="/contact"',
+            'href="index.html"'=>'href="/"','href="features.html"'=>'href="/#features"','href="solutions.html"'=>'href="/#solutions"','href="pricing.html#'=>'href="/#','href="pricing.html"'=>'href="/#pricing"',
+            'href="contact.html?'=>'href="/?','href="contact.html"'=>'href="/#contact"',
         ];
         return str_replace(array_keys($replacements), array_values($replacements), $html);
     }

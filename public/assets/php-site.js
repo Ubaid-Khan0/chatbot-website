@@ -12,7 +12,8 @@
         if (!plan) return;
         result.querySelector('[data-result-price]').textContent = `PKR ${Number(plan.starting_price_pkr).toLocaleString()}${plan.price_suffix || ''}`;
         result.querySelector('[data-result-copy]').textContent = plan.description;
-        result.querySelector('[data-result-link]').href = `/contact?plan=${encodeURIComponent(plan.name)}#inquiry`;
+        result.querySelector('[data-result-link]').href = '#contact';
+        result.querySelector('[data-result-link]').dataset.planChoice = plan.name;
       }).observe(result, {attributes: true, attributeFilter: ['hidden']});
     } catch (_) {}
   }

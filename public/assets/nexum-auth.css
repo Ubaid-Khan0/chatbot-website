@@ -37,8 +37,8 @@ button,
 
 button:hover,
 .button-link:hover {
-  background: #b00606;
-  border-color: #b00606;
+  background: #0b3d91;
+  border-color: #0b3d91;
   transform: translateY(-1px);
 }
 

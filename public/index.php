@@ -19,7 +19,13 @@ $method = Http::method();
 $isApi = str_starts_with($path, '/api/');
 
 try {
-    $pages = ['/' => 'index', '/features' => 'features', '/solutions' => 'solutions', '/pricing' => 'pricing', '/contact' => 'contact'];
+    $sectionRedirects = ['/features' => 'features', '/solutions' => 'solutions', '/pricing' => 'pricing', '/contact' => 'contact'];
+    if ($method === 'GET' && isset($sectionRedirects[$path])) {
+        $query = $path === '/contact' && isset($_GET['plan']) ? '?plan=' . rawurlencode((string) $_GET['plan']) : '';
+        header('Location: /' . $query . '#' . $sectionRedirects[$path], true, 301);
+        exit;
+    }
+    $pages = ['/' => 'index'];
     if ($method === 'GET' && isset($pages[$path])) {
         header('Content-Type: text/html; charset=utf-8');
         echo $renderer->publicPage($pages[$path]);
