@@ -54,7 +54,7 @@ button:focus-visible,
 
 button,
 .button-link {
-  background: #0b3d91;
+  background: #fff;
   border-color: #c80707;
   color: #c80707;
   box-shadow: 0 10px 28px rgba(11, 61, 145, .3);
@@ -62,7 +62,7 @@ button,
 
 button:hover,
 .button-link:hover {
-  background: #041a41;
+  background: #0b3d91;
   border-color: #d43b3b;
   color: #d43b3b;
 }
